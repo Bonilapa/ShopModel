@@ -1,6 +1,6 @@
 public class Clothes extends Inventory{
 
-    private int size;
+    protected int size;
 
     public Clothes(String name, double price, int size) {
         super(name, price);

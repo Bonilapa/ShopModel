@@ -1,7 +1,11 @@
 public class Inventory {
 
-    private String name;
-    private double price;
+    protected String name;
+    protected double price;
+
+    private Inventory(){
+
+    }
 
     public Inventory(String name, double price) {
         this.name = name;
