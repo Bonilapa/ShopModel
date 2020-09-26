@@ -6,10 +6,10 @@ public class Order {
     private Inventory inventory;
     private Consumer consumer;
     private Customer customer;
-    private int price;
+    private double price;
     private int Amount;
 
-    public Order(Date date, Inventory inventory, Consumer consumer, Customer customer, int price, int amount) {
+    public Order(Date date, Inventory inventory, Consumer consumer, Customer customer, double price, int amount) {
 
         this.date = date;
         this.inventory = inventory;
@@ -51,7 +51,7 @@ public class Order {
         this.customer = customer;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 

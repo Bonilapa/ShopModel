@@ -15,13 +15,8 @@ public class Expirable extends Inventory{
         return expirationDate;
     }
 
-    public boolean exripationDateExpired(){
-
-        return checkExpirationDate(new Date());
-    }
-
     protected boolean checkExpirationDate(Date date){
 
-        return date.compareTo(expirationDate) >= 0;
+        return expirationDate.compareTo(date) >= 0;
     }
 }

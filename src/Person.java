@@ -9,7 +9,7 @@ public class Person {
 
     public Person(String name) {
 
-        if(nameIsNull(name){
+        if(nameIsNull(name)){
 
             return;
         }
@@ -36,7 +36,7 @@ public class Person {
 
     public void setName(String name) {
 
-        if(nameIsNull(name){
+        if(nameIsNull(name)){
 
             return;
         }

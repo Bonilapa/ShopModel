@@ -1,5 +1,8 @@
+/*
+ * Enum class to categorize stocks
+ */
 public enum Category {
     Clothes,
-    Foood,
+    Food,
     Pharmacy
 }
