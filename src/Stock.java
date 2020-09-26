@@ -3,31 +3,66 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+
+/*
+ * Class for stock entity.
+ * Stock stores a list of appropriate goods
+ * according to its category.
+ */
 public class Stock {
 
     private Category stockCategory;
     private List<Pair> listOfPairs;
 
+
+    /*
+     * Class constructor with category initialization
+     */
     public Stock(Category category) {
         this.stockCategory = category;
         this.listOfPairs = new ArrayList<>();
     }
 
+
+    /*
+     * Stock category getter
+     */
     public Category getCategory() {
 
         return stockCategory;
     }
 
+
+    /*
+     * Stock category setter
+     */
     public void setCategory(Category category) {
 
         this.stockCategory = category;
     }
 
+
+    /*
+     * Stock list of pairs inventory - amount getter
+     */
     public List<Pair> getListOfPairs() {
 
         return listOfPairs;
     }
 
+
+    /*
+     * Method adds an inventory - amount pair
+     * to the list of the stock.
+     *
+     * Method with value parameter, that
+     * can be taken as an integer value of
+     * expiration date or a clothes size.
+     *
+     * 0 .. successful
+     * -1 .. category not found
+     * -2 .. does not match with the stock category
+     */
     public int add(Category inventoryCategory, String name, double price, int value, int amount) {
 
         if (inventoryCategory == stockCategory) {
@@ -44,10 +79,21 @@ public class Stock {
                 return -1;
             }
         } else {
-            return -2; // does not match with the stock category
+            return -2;
         }
     }
 
+    /*
+     * Method adds an inventory - amount pair
+     * to the list of the stock.
+     *
+     * Method with date parameter, that
+     * can be taken as expiration date only.
+     *
+     * 0 .. successful
+     * -1 .. category not found
+     * -2 .. does not match with the stock category
+     */
     public int add(Category inventoryCategory, String name, double price, Date date, int amount) {
 
         if (inventoryCategory == stockCategory) {
@@ -58,13 +104,25 @@ public class Stock {
                 listOfPairs.add(new Pair(new Pharmacy(name, price, date), amount));
                 return 0;
             } else {
-                return -1; // no match with known category
+                return -1;
             }
         } else {
-            return -2; // does not match with the stock category
+            return -2;
         }
     }
 
+    /*
+     * Method finds an inventory - amount pair
+     * in the list of the stock.
+     *
+     * Method with value parameter, that
+     * can be taken as an integer value of
+     * expiration date or a clothes size.
+     *
+     * Pair .. successful
+     * null .. error. could not find an
+     * appropriate pair
+     */
     public Pair takeFrom(Category inventoryCategory, String name, double price, int value, int amount) {
 
         if (inventoryCategory == stockCategory) {
@@ -89,16 +147,28 @@ public class Stock {
             } else {
 
                 System.out.println("No matches with categories");
-                return null;   // no matches
+                return null;
             }
         } else {
 
             System.out.println("No match with category of the stock");
-            return null; // not match with stock category
+            return null;
         }
     }
 
-
+    /*
+     * Method finds an inventory - amount pair
+     * in the list of the stock.
+     *
+     * Overloaded method without special parameter.
+     * Expirable entities are compared with a
+     * current date themselves and clothes can be
+     * ordered without specifying a size.
+     *
+     * Pair .. successful
+     * null .. error. could not find an
+     * appropriate pair
+     */
     public Pair takeFrom(Category inventoryCategory, String name, double price, int amount) {
 
         if (inventoryCategory == stockCategory) {
@@ -166,6 +236,19 @@ public class Stock {
         }
     }
 
+    /*
+     * Method removes an exact inventory - amount pair
+     * from the list of the stock.
+     *
+     * Method with value parameter, that
+     * can be taken as an integer value of
+     * expiration date or a clothes size.
+     *
+     * 0 .. successful
+     * -1 .. exact matching with goods not found
+     * -2 .. matching with category not found
+     * -3 .. does not match to the stock category
+     */
     public int remove(Category inventoryCategory, String name, double price, int value, int amount) {
 
         if (inventoryCategory == stockCategory) {
@@ -235,6 +318,20 @@ public class Stock {
             return -3; // not match with stock category
         }
     }
+
+
+    /*
+     * Method removes an exact inventory - amount pair
+     * from the list of the stock.
+     *
+     * Method with date parameter, that
+     * can be taken as an expiration date only.
+     *
+     * 0 .. successful
+     * -1 .. exact matching with goods not found
+     * -2 .. matching with category not found
+     * -3 .. does not match to the stock category
+     */
     public int remove(Category inventoryCategory, String name, double price, Date date, int amount) {
 
         if (inventoryCategory == stockCategory) {
